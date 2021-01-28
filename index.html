@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/fabric.js"></script>
+        <script src="js/CropController.js"></script>
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <title>Fabric Layout</title>
+    </head>
+
+    <body ng-app="myApp">
+        <div ng-controller="ImgCropController">
+            <div class="content">
+                <div class="flex-box">
+                    <div class="canvas-item">
+                        <div id="wrap" class="bg-gradient">
+                            <canvas id="canvas">Canvas is not supported!</canvas>
+                        </div>
+                    </div>
+                    <div class="panel-item">
+                        <div class="panel">
+                            <div class="section mt-3" id="shape-mask">
+                                <h6 class="mb-3">Masking Shapes</h6>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-outline-primary" ng-click="SVGMASK('images/s1.svg',5)"><img src="images/s1.svg" /></button>
+                                    <button type="button" class="btn btn-outline-primary" ng-click="SVGMASK('images/s4.svg',5)"><img src="images/s4.svg" /></button>
+                                    <button type="button" class="btn btn-outline-primary" ng-click="SVGMASK('images/star1.svg',5)"><img src="images/star1.svg" /></button>
+                                    <button type="button" class="btn btn-outline-primary" ng-click="SVGMASK('images/heart.svg',5)"><img src="images/heart.svg" /></button>
+                                </div>
+                            </div>
+
+                            <div class="section mt-3" id="replace-section">
+                                <h6 class="mb-3">Images</h6>
+                                <div class="btn-group filter-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-outline-primary" ng-click="addImage('images/A.jpeg',100,100)">
+                                        <img style="width: 50px;" src="images/A.jpeg" />
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" ng-click="addImage('images/img2.jpg',100,100)">
+                                        <img style="width: 50px;" src="images/img2.jpg" />
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" ng-click="addImage('images/rp1.jpg',100,100)">
+                                        <img style="width: 50px;" src="images/rp1.jpg" />
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" ng-click="addImage('images/rp2.jpg',100,100 )">
+                                        <img style="width: 50px;" src="images/rp2.jpg" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div role="group" class="section mt-3 btn-toolbar">
+                                <button type="button" class="btn btn-outline-primary mt-1" ng-click="removeMasking()">RemoveMasking</button>
+                                <button type="button" class="btn btn-outline-primary mt-1" ng-click="editMasking()">Edit Masking</button>
+
+                            </div>
+
+                            <div class="section mt-3 btn-toolbar">
+                                <button type="button" class="btn btn-outline-primary mt-1" ng-click="ApplyCrop()">Apply Crop</button>
+                                <button type="button" class="btn btn-outline-primary mr-1" ng-click="cloneObject()">Duplicate</button>
+                                <button type="button" class="btn btn-outline-primary mr-1" ng-click="deleteObject()">Delete</button>
+                                <!-- <button type="button" class="btn btn-outline-primary mr-1" ng-click="resetMaskImageWithSvg()">Reset Mask</button> -->
+                            </div>
+                            <div role="group" class="section mt-3 btn-toolbar">
+                                <textarea name="canvas-data" id="CanvasTextData" style="font-family: Courier;font-size:'6px;'" rows="6" cols="40" ng-model="canvasData">{{canvasData}}</textarea>
+                                <button type="button" class="btn btn-outline-primary mt-1" ng-click="obtainCanvasData()">Generate JSON</button>
+                                <button type="button" class="btn btn-outline-primary mt-1" ng-click="LoadJson()">Load Json</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
